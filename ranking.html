@@ -1,1 +1,83 @@
-print('ranking')
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>RANKING</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="logo"></div>
+        <h1>RANKING</h1>
+    </div>
+
+    <div class="button-area">
+        <button class="vote-btn" onclick="showVote()">投票する</button>
+        <button class="rank-btn" onclick="showRanking()">ランキングを見る</button>
+    </div>
+
+    <!-- 投票フォーム -->
+    <div id="vote" class="content">
+        <h2>投票フォーム</h2>
+
+        <label>作品名</label>
+        <input type="text" placeholder="作品名を入力">
+
+        <label>カテゴリー</label>
+        <select>
+            <option>アニメ</option>
+            <option>ゲーム</option>
+            <option>映画</option>
+            <option>その他</option>
+        </select>
+
+        <button class="submit">投票する</button>
+    </div>
+
+    <!-- ランキング -->
+    <div id="ranking" class="content">
+        <h2>ランキング</h2>
+
+        <table>
+            <tr>
+                <th>順位</th>
+                <th>作品名</th>
+                <th>票数</th>
+            </tr>
+            <tr>
+                <td>1位</td>
+                <td>作品A</td>
+                <td>150票</td>
+            </tr>
+            <tr>
+                <td>2位</td>
+                <td>作品B</td>
+                <td>120票</td>
+            </tr>
+            <tr>
+                <td>3位</td>
+                <td>作品C</td>
+                <td>90票</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<script>
+function showVote() {
+    document.getElementById("vote").style.display = "block";
+    document.getElementById("ranking").style.display = "none";
+}
+
+function showRanking() {
+    document.getElementById("ranking").style.display = "block";
+    document.getElementById("vote").style.display = "none";
+}
+</script>
+
+</body>
+</html>
