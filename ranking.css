@@ -1,2 +1,100 @@
 body{
+    margin:0;
+    font-family: "Yu Gothic", sans-serif;
+    background:#a9a9a9;
+}
+
+.container{
+    width:1000px;
+    margin:30px auto;
+}
+
+.header{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:white;
+    border:1px solid #666;
+}
+
+h1{
+    font-size:50px;
+}
+
+.button-area{
+    display:flex;
+    justify-content:center;
+    gap:80px;
+    margin:50px 0;
+}
+
+button{
+    width:360px;
+    height:70px;
+    font-size:32px;
+    border-radius:15px;
+    cursor:pointer;
+    border:1px solid #666;
+}
+
+.vote-btn{
+    background:red;
+    color:white;
+}
+
+.rank-btn{
+    background:white;
+}
+
+.content{
+    width:800px;
+    margin:0 auto;
+    display:none;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.content h2{
+    margin-top:0;
+}
+
+select,
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0 20px;
+    font-size:18px;
+    box-sizing:border-box;
+}
+
+.submit{
+    width:180px;
+    height:50px;
+    background:red;
+    color:white;
+    font-size:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th,
+table td{
+    border:1px solid #ccc;
+    padding:12px;
+    text-align:center;
+}
+
+table th{
+    background:#f0f0f0;
 }

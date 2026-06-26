@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>RANKING</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ranking.css">
 </head>
 <body>
 
@@ -19,22 +19,53 @@
         <button class="rank-btn" onclick="showRanking()">ランキングを見る</button>
     </div>
 
-    <!-- 投票フォーム -->
-    <div id="vote" class="content">
+<div id="vote" class="content">
+
         <h2>投票フォーム</h2>
 
-        <label>作品名</label>
-        <input type="text" placeholder="作品名を入力">
+        <label for="anime">曲名を検索</label>
 
-        <label>カテゴリー</label>
-        <select>
-            <option>アニメ</option>
-            <option>ゲーム</option>
-            <option>映画</option>
-            <option>その他</option>
-        </select>
+        <input
+            type="text"
+            id="anime"
+            list="animeList"
+            placeholder="曲名を入力">
+
+        <datalist id="animeList">
+            <option value="愛情と矛先">
+            <option value="アウフヘーベン">
+            <option value="藍">
+            <option value="青と夏">
+            <option value="Attitude">
+            <option value="あなたに">
+            <option value="ア・プリオリ">
+            <option value="アボイドノート">
+            <option value="アポロドロス">
+            <option value="アンゼンパイ">
+            <option value="ANTENNA">
+            <option value="umbrella">
+            <option value="アンラブレス">
+            <option value="In the Morning">
+            <option value="InsPirATioN">
+            <option value="InTerLuDe～白い朝～">
+            <option value="インフェルノ">
+            <option value="WaLL FloWeR">
+            <option value="WanteD!WanteD!">
+            <option value="嘘じゃないよ">
+            <option value="うブ">
+            <option value="えほん">
+            <option value="L.P">
+            <option value="延々">
+            <option value="Oz">
+            <option value="おもちゃの兵隊">
+            <option value="On My MiND">
+            <option value="風と町">
+            <option value="我逢人">
+            <option value="キコリ時計">
+        </datalist>
 
         <button class="submit">投票する</button>
+
     </div>
 
     <!-- ランキング -->
