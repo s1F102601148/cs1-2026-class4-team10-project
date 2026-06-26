@@ -3,11 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <title>あなたにぴったりのMrs. GREEN APPLE曲診断</title>
+    <link rel="stylesheet" href="analyze.css">
 </head>
 <body>
-    <h2>好きなミセスの曲が分かる⁉</h2>
-    <h1>あなたにぴったりのMrs. GREEN APPLE曲診断テスト</h1>
-    
+<h1 class="main-page-title">好きなミセスの曲が分かる!? あなたにぴったりのMrs. GREEN APPLE曲診断テスト</h1>
+<div class="container">
+    <div id="start-card" class="card active">
+        <h1>Mrs. GREEN APPLE<br>あなたにぴったりの曲診断</h1>
+        <p class="subtitle">今の学校生活や気分に合わせて、3〜4問であなたの今のテーマソングを診断します！</p>
+        <div class="btn-list">
+            <button onclick="nextPage('q1')">診断をはじめる</button>
+        </div>
+    </div>
+
+    <div id="q1" class="card">
+        <p class="question-text">Q1. 今の学校生活での気分はどっちに近い？</p>
+        <div class="btn-list">
+            <button onclick="choose('q1', 'A')">部活や勉強、恋に全力で青春してる！</button>
+            <button onclick="choose('q1', 'B')">ちょっとお疲れ気味、またはのんびりしたい</button>
+        </div>
+    </div>
+
+    <div id="q2-A" class="card">
+        <p class="question-text">Q2. あなたが今、一番求めているパワーは？</p>
+        <div class="btn-list">
+            <button onclick="choose('q2-A', 'A')">モチベーションを爆上げする疾走感！</button>
+            <button onclick="choose('q2-A', 'B')">仲間との絆や優しさを感じる温かさ</button>
+        </div>
+    </div>
+
+    <div id="q2-B" class="card">
+        <p class="question-text">Q2. 夜、1人で過ごしているときは何を考えてる？</p>
+        <div class="btn-list">
+            <button onclick="choose('q2-B', 'A')">将来への不安や、周りと自分を比べちゃう…</button>
+            <button onclick="choose('q2-B', 'B')">明日もそれなりに頑張ろう、と自分を癒やしたい</button>
+        </div>
+    </div>
+
+    <div id="q3-AA" class="card">
+        <p class="question-text">Q3. どんなシチュエーションで聴きたい？</p>
+        <div class="btn-list">
+            <button onclick="showResult('青と夏')">通学中や、晴れた日の太陽の下で！</button>
+            <button onclick="showResult('インソムニア')">テスト前や試合前、自分を鼓舞したい時！</button>
+        </div>
+    </div>
+
+    <div id="q3-AB" class="card">
+        <p class="question-text">Q3. 今のあなたの大切なものは？</p>
+        <div class="btn-list">
+            <button onclick="showResult('僕のこと')">これまでの努力や、自分の足跡</button>
+            <button onclick="showResult('ダンスホール')">毎日の小さな笑顔や、友達との楽しい時間</button>
+        </div>
+    </div>
+
+    <div id="q3-BA" class="card">
+        <p class="question-text">Q3. 心の叫び、どっちが近い？</p>
+        <div class="btn-list">
+            <button onclick="showResult('ケセラセラ')">「なるようになる」って誰かに言ってほしい</button>
+            <button onclick="showResult('Soranji')">暗闇の中でも、深い愛や希望を感じたい</button>
+        </div>
+    </div>
+
+    <div id="q3-BB" class="card">
+        <p class="question-text">Q3. 明日の自分にメッセージを送るなら？</p>
+        <div class="btn-list">
+            <button onclick="showResult('ライラック')">青臭くてもいい、新学期も駆け抜けよう！</button>
+            <button onclick="showResult('Studio Session版 WanteD! WanteD!')">肩の力を抜いて、気楽にいこう</button>
+        </div>
+    </div>
+
+    <div id="result-card" class="card">
+        <p class="result-title">あなたにおすすめの曲は...</p>
+        <div id="res-song" class="song-name">曲名</div>
+        
+        <div class="thumbnail-box">
+            <img id="res-thumb" src="" alt="動画のサムネイル">
+        </div>
+
+        <a id="res-link" class="mv-link" href="#" target="_blank">YouTubeで曲を聴く 🎬</a>
+        
+        <div class="btn-list">
+            <button class="restart-btn" onclick="restart()">もう一度診断する</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 曲ごとのデータ（曲名、サムネイル画像、YouTube等のURL）
+    const songData = {
+        '青と夏': {
+            imgsrc: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500',
+            url: 'https://www.youtube.com/watch?v=m34DPnRUfMU'
+        },
+        'インソムニア': {
+            imgsrc: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500',
+            url: 'https://www.youtube.com/results?search_query=Mrs.GREEN+APPLE+インソムニア'
+        },
+        '僕のこと': {
+            imgsrc: 'https://images.unsplash.com/photo-1494959764136-6be9eb3c261e?w=500',
+            url: 'https://www.youtube.com/watch?v=xefpMEgf7vM'
+        },
+        'ダンスホール': {
+            imgsrc: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500',
+            url: 'https://www.youtube.com/watch?v=E_M6as9iaF4'
+        },
+        'ケセラセラ': {
+            imgsrc: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=500',
+            url: 'https://www.youtube.com/watch?v=Jy-QS27q7lA'
+        },
+        'Soranji': {
+            imgsrc: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500',
+            url: 'https://www.youtube.com/watch?v=44cI2YmU6u0'
+        },
+        'ライラック': {
+            imgsrc: 'https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?w=500',
+            url: 'https://www.youtube.com/watch?v=QfIvLw0m0uA'
+        },
+        'Studio Session版 WanteD! WanteD!': {
+            imgsrc: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500',
+            url: 'https://www.youtube.com/results?search_query=Mrs.GREEN+APPLE+WanteD+WanteD'
+        }
+    };
+
+    let currentSelections = '';
+
+    function nextPage(pageId) {
+        document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+    }
+
+    function choose(currentQuestion, choice) {
+        if (currentQuestion === 'q1') {
+            currentSelections = choice;
+            nextPage('q2-' + choice);
+        } else if (currentQuestion === 'q2-A') {
+            currentSelections += choice;
+            nextPage('q3-' + currentSelections);
+        } else if (currentQuestion === 'q2-B') {
+            currentSelections += choice;
+            nextPage('q3-' + currentSelections);
+        }
+    }
+
+    function showResult(songName) {
+        const data = songData[songName];
+        document.getElementById('res-song').innerText = songName;
+        document.getElementById('res-thumb').src = data.imgsrc;
+        document.getElementById('res-link').href = data.url;
+        nextPage('result-card');
+    }
+
+    function restart() {
+        currentSelections = '';
+        nextPage('start-card');
+    }
+</script>
 </body>
 
 </html>
